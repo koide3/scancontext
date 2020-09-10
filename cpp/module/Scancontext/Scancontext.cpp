@@ -269,7 +269,7 @@ std::pair<int, float> SCManager::detectLoopClosureID ( void )
         polarcontext_invkeys_to_search_.assign( polarcontext_invkeys_mat_.begin(), polarcontext_invkeys_mat_.end() - NUM_EXCLUDE_RECENT ) ;
 
         polarcontext_tree_.reset(); 
-        polarcontext_tree_ = std::make_unique<InvKeyTree>(PC_NUM_RING /* dim */, polarcontext_invkeys_to_search_, 10 /* max leaf */ );
+        polarcontext_tree_.reset(new InvKeyTree(PC_NUM_RING /* dim */, polarcontext_invkeys_to_search_, 10 /* max leaf */ ));
         // tree_ptr_->index->buildIndex(); // inernally called in the constructor of InvKeyTree (for detail, refer the nanoflann and KDtreeVectorOfVectorsAdaptor)
         t_tree_construction.toc("Tree construction");
     }
